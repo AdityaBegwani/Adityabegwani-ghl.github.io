@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .wrapper {
+      --font-color-dark: #323232;
+      --font-color-light: #FFF;
+      --bg-color: #fff;
+      --main-color: #007bff;
+      width: Auto;
+      height: 60px;
+      background-color: var(--bg-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo img {
+      height: 45px;
+    }
+
+    .nav-options {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .option {
+      margin: 0 20px;
+      position: relative;
+    }
+
+    .option a {
+      text-decoration: none;
+      color: var(--font-color-dark);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 16px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .option a:hover {
+      background-color: var(--main-color);
+      color: var(--font-color-light);
+    }
+
+    .option a.active {
+      background-color: var(--main-color);
+      color: var(--font-color-light);
+    }
+
+    /* Dropdown Menu Styles */
+    .dropdown {
+      position: absolute;
+      top: 100%; /* Moves dropdown below the heading */
+      left: 0;
+      width: 200px;
+      background-color: var(--bg-color);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      display: none;
+      z-index: 100;
+      padding: 10px;
+    }
+
+    .dropdown .niche {
+      font-weight: bold;
+      color: var(--font-color-dark);
+      padding: 10px;
+      background-color: #e9ecef;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .dropdown .niche:not(:last-child) {
+      margin-bottom: 10px; /* Space between different niches */
+    }
+
+    .dropdown .product-list {
+      list-style: none;
+      padding-left: 10px; /* Indent products under niche */
+      margin: 0;
+    }
+
+    .dropdown .product-list .product {
+      padding: 5px 0;
+      color: var(--font-color-dark);
+      background-color: var(--bg-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dropdown .product-list .product:hover {
+      background-color: var(--main-color);
+      color: var(--font-color-light);
+    }
+
+    .option:hover .dropdown {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="logo">
+      <img src="Logo.png" alt="Logo">
+    </div>
+    <div class="nav-options">
+      <div class="option">
+        <a href="Home.html" class="active">Home</a>
+      </div>
+      <div class="option">
+        <a href="AboutUs.html">About Us</a>
+      </div>
+      <div class="option">
+        <a href="Services.html">Product and Services</a>
+        <div class="dropdown">
+          <div class="niche">Electronics</div>
+          <ul class="product-list">
+            <li class="product">Smartphones</li>
+            <li class="product">Laptops</li>
+            <li class="product">Cameras</li>
+          </ul>
+          <div class="niche">Clothing</div>
+          <ul class="product-list">
+            <li class="product">Men's Wear</li>
+            <li class="product">Women's Wear</li>
+            <li class="product">Accessories</li>
+          </ul>
+          <div class="niche">Home Appliances</div>
+          <ul class="product-list">
+            <li class="product">Refrigerators</li>
+            <li class="product">Washing Machines</li>
+            <li class="product">Microwaves</li>
+          </ul>
+        </div>
+      </div>
+      <div class="option">
+        <a href="ContactUs.html">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<!-- Existing code above this line -->
+
+<!-- Image Carousel -->
+<div class="carousel">
+    <img src="home4.png" class="active">
+    <img src="home5.png">
+    <img src="home6.png">
+    <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+    <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+</div>
+
+<!-- Add the CSS styles within your existing <style> block or in a new one -->
+<style>
+    .carousel {
+        position: relative;
+        width: Auto;
+        height: Auto;
+        overflow: hidden;
+        margin-top: 20px; /* Adjust to create space between the existing content and the carousel */
+    }
+    .carousel img {
+        width: 100%;
+        height: 100%;
+        display: none;
+    }
+    .carousel img.active {
+        display: block;
+    }
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2em;
+        color: #333;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: none;
+        cursor: pointer;
+        transition: color 0.3s, background-color 0.3s; /* Animation */
+    }
+    .arrow.left {
+        left: 30px;
+    }
+    .arrow.right {
+        right: 30px;
+    }
+    .arrow:hover {
+        color: #fff; /* Change color on hover */
+        background-color: #666; /* Darken background on hover */
+    }
+    .arrow:active {
+        color: #ff0000; /* Change color when clicked */
+        background-color: #444; /* Darken background more when clicked */
+    }
+</style>
+
+<!-- Add the JavaScript code within your existing <script> block or in a new one -->
+<script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.carousel img');
+
+    function showSlide(index) {
+        images.forEach((img, i) => {
+            img.classList.toggle('active', i === index);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showSlide(currentIndex);
+    }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Layout</title>
+    <style>
+        /* Card Container */
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Designed Heading Box */
+        .card-heading-box {
+            text-align: center;
+            padding: 15px;
+            margin: 20px auto;
+            background-color: rgba(0, 126, 216, 0.7);
+            border-radius: 8px;
+            color: white;
+            max-width: 900px;
+            border: 2px solid #00aeff;
+            backdrop-filter: blur(5px);
+        }
+
+        .card-heading-box h1 {
+            font-size: 24px;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        /* Shared Styles for All Cards */
+        .card p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            color: #666;
+        }
+
+        .card p.small {
+            font-size: 13px;
+        }
+
+        .go-corner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            overflow: hidden;
+            top: 0;
+            right: 0;
+            background-color: #007afc;
+            border-radius: 0 4px 0 32px;
+        }
+
+        .go-arrow {
+            margin-top: -4px;
+            margin-right: -4px;
+            color: white;
+            font-family: courier, sans;
+        }
+
+        /* Card 1 Styles */
+         .card1 {
+            display: block;
+            top: 0px;
+            position: relative;
+            max-width: 215px;
+            background-color: #f2f8f9;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 0 8px;
+            text-decoration: none;
+            z-index: 0;
+            overflow: hidden;
+            border: 1px solid #f2f8f9;
+        }
+
+        .card1:hover {
+            transition: all 0.2s ease-out;
+            box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+            top: -4px;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+
+        .card1:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: -16px;
+            right: -16px;
+            background: #007afc;
+            height: 32px;
+            width: 32px;
+            border-radius: 32px;
+            transform: scale(2);
+            transform-origin: 50% 50%;
+            transition: transform 0.15s ease-out;
+        }
+
+        .card1:hover:before {
+            transform: scale(2.15);
+        }
+
+
+
+        /* Card 2 Styles */
+        .card2 {
+            display: block;
+            top: 0px;
+            position: relative;
+            max-width: 215px;
+            background-color: #f2f8f9;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 0 8px;
+            text-decoration: none;
+            z-index: 0;
+            overflow: hidden;
+            border: 1px solid #f2f8f9;
+        }
+
+        .card2:hover {
+            transition: all 0.2s ease-out;
+            box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+            top: -4px;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+
+        .card2:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: -16px;
+            right: -16px;
+            background: #007afc;
+            height: 32px;
+            width: 32px;
+            border-radius: 32px;
+            transform: scale(2);
+            transform-origin: 50% 50%;
+            transition: transform 0.15s ease-out;
+        }
+
+        .card2:hover:before {
+            transform: scale(2.15);
+        }
+
+        /* Card 3 Styles */
+         .card3 {
+            display: block;
+            top: 0px;
+            position: relative;
+            max-width: 215px;
+            background-color: #f2f8f9;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 0 8px;
+            text-decoration: none;
+            z-index: 0;
+            overflow: hidden;
+            border: 1px solid #f2f8f9;
+        }
+
+        .card3:hover {
+            transition: all 0.2s ease-out;
+            box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+            top: -4px;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+
+        .card3:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: -16px;
+            right: -16px;
+            background: #007afc;
+            height: 32px;
+            width: 32px;
+            border-radius: 32px;
+            transform: scale(2);
+            transform-origin: 50% 50%;
+            transition: transform 0.15s ease-out;
+        }
+
+        .card3:hover:before {
+            transform: scale(2.15);
+        }
+
+
+        /* Card 4 Styles */
+       .card4 {
+            display: block;
+            top: 0px;
+            position: relative;
+            max-width: 215px;
+            background-color: #f2f8f9;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 0 8px;
+            text-decoration: none;
+            z-index: 0;
+            overflow: hidden;
+            border: 1px solid #f2f8f9;
+        }
+
+        .card4:hover {
+            transition: all 0.2s ease-out;
+            box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+            top: -4px;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+
+        .card4:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: -16px;
+            right: -16px;
+            background: #007afc;
+            height: 32px;
+            width: 32px;
+            border-radius: 32px;
+            transform: scale(2);
+            transform-origin: 50% 50%;
+            transition: transform 0.15s ease-out;
+        }
+
+        .card4:hover:before {
+            transform: scale(2.15);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Designed Heading Box -->
+    <div class="card-heading-box">
+        <h1>4 Easy Steps to Get Medical Equipment Delivered At Your Home</h1>
+    </div>
+
+    <!-- Card Container -->
+    <div class="card-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <a class="card1" href="#">
+                <p>Step 1</p>
+                <p class="small">Call us or leave your Number</p>
+                  
+                <p class="small"> +91 9830063605
+                  
+                  </p>
+                <div class="go-corner" href="#">
+                    <div class="go-arrow">→</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <a class="card2" href="#">
+                <p>Step 2</p>
+                <p class="small">Our Representative calls you at the earliest</p>
+                <div class="go-corner" href="#">
+                    <div class="go-arrow">→</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <a class="card3" href="#">
+                <p>Step 3</p>
+                <p class="small">Finalize your requiement</p>
+                <div class="go-corner" href="#">
+                    <div class="go-arrow">→</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <a class="card4" href="#">
+                <p>Step 4</p>
+                <p class="small">Final delivery & payment</p>
+                <div class="go-corner" href="#">
+                    <div class="go-arrow">→</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .content-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 40vh;
+      padding: 0 50px; /* Add padding for spacing */
+    }
+
+    .left-image {
+      flex-shrink: 0;
+      width: 45%; /* Adjust the width as needed */
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .left-image img {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px; /* Optional: add some border-radius */
+    }
+
+    .custom-card {
+      position: relative;
+      width: 55%; /* Adjust the width as needed */
+      height: 300px;
+      background: linear-gradient(-45deg, #dde5ff 0%, #ffffff 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .custom-card img {
+      width: 150px;
+      height: 100px;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .custom-card:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .custom-card__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: #fff;
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .custom-card:hover .custom-card__content {
+      transform: translate(-50%, -50%) rotate(0deg);
+      opacity: 1;
+    }
+
+    .custom-card__title {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+      font-weight: 700;
+    }
+
+    .custom-card__description {
+      margin: 10px 0 0;
+      font-size: 14px;
+      color: #777;
+      line-height: 1.4;
+    }
+
+    .custom-card:hover img {
+      transform: scale(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="left-image">
+      <img src="About Us.jpeg" alt="Home Image">
+    </div>
+    <div class="custom-card">
+      <img src="Logo.png" alt="Logo">
+      <div class="custom-card__content">
+        <p class="custom-card__title">About Us</p>
+        <p class="custom-card__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+          veniam, quis nostrud exercitation ullamco.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
